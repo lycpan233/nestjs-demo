@@ -1,0 +1,16 @@
+model User {
+    id           Int     @id @default(autoincrement())
+    studentid    Int     @unique(map: "uk_studentid") @db.UnsignedInt
+    wxname       String? @db.VarChar(30)
+    nickname     String? @db.VarChar(30)
+    truename     String? @db.VarChar(30)
+    email        String? @db.VarChar(50)
+    password     String  @default("") @db.VarChar(64)
+    salt         String  @default("") @db.VarChar(32)
+    smallAvatar  String? @default("") @db.VarChar(255)
+    mediumAvatar String? @default("") @db.VarChar(255)
+    largeAvatar  String? @default("") @db.VarChar(255)
+    roles        String? @default("|ROLE_USER|") @db.VarChar(255)
+
+    @@map("user")
+}
