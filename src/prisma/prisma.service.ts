@@ -1,5 +1,6 @@
 import { Injectable, Type } from '@nestjs/common';
 
+import { PrismaClient } from '@prisma/client';
 import { PrismaClientProvider } from './client.provider';
 
 const buildPrismaService = () => {
@@ -7,7 +8,7 @@ const buildPrismaService = () => {
     constructor(provider: PrismaClientProvider) {
       return provider.withExtensions();
     }
-  } as Type<ReturnType<PrismaClientProvider['withExtensions']>>;
+  } as Type<PrismaClient & ReturnType<PrismaClientProvider['withExtensions']>>;
 };
 
 @Injectable()

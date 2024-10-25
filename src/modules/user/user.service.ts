@@ -15,8 +15,8 @@ export class UserService {
   }
 
   async findOne(id: number) {
-    console.log(id);
-    const user = await this.prisma.user.findFirst();
+    const { prisma } = this;
+    const user = await prisma.user.findFirst();
     console.log(user);
     return `This action returns a #${id} user`;
   }
